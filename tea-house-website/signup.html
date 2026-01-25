@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация в Чайном Клубе</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --tea-green: #2E8B57;
+            --tea-light: #F5F5DC;
+            --tea-warning: #FFC107;
+            --tea-danger: #DC3545;
+        }
+        
+        .signup-page {
+            padding: 50px 0;
+            background: linear-gradient(135deg, var(--tea-light) 0%, #E8F5E9 100%);
+            min-height: 100vh;
+        }
+        
+        .bg-tea {
+            background: linear-gradient(135deg, var(--tea-green) 0%, #1E6B42 100%);
+        }
+        
+        .text-tea {
+            color: var(--tea-green) !important;
+        }
+        
+        .btn-tea {
+            background-color: var(--tea-green);
+            color: white;
+            border: none;
+        }
+        
+        .btn-tea:hover {
+            background-color: #1E6B42;
+            color: white;
+        }
+        
+        .btn-outline-tea {
+            border-color: var(--tea-green);
+            color: var(--tea-green);
+        }
+        
+        .btn-outline-tea:hover {
+            background-color: var(--tea-green);
+            color: white;
+        }
+        
+        .card {
+            border: none;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .border-tea {
+            border-color: var(--tea-green) !important;
+        }
+        
+        .password-input {
+            padding-right: 50px;
+        }
+        
+        .subscription-radio:checked + label {
+            font-weight: bold;
+            color: var(--tea-green);
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--tea-green);
+            border-color: var(--tea-green);
+        }
+        
+        .form-check-input:focus {
+            border-color: var(--tea-green);
+            box-shadow: 0 0 0 0.25rem rgba(46, 139, 87, 0.25);
+        }
+        
+        .alert-info {
+            background-color: var(--tea-light);
+            border-color: var(--tea-green);
+        }
+        
+        @media (max-width: 768px) {
+            .signup-page {
+                padding: 20px 0;
+            }
+            
+            .card-body {
+                padding: 20px !important;
+            }
+            
+            .btn-lg {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+        
+        .tea-checkbox .form-check-input {
+            margin-top: 0.3rem;
+        }
+        
+        .card.border-primary {
+            border-width: 2px !important;
+        }
+        
+        .card.border-warning {
+            border-width: 2px !important;
+        }
+        
+        .card.border-danger {
+            border-width: 2px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-page">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-header bg-tea text-white text-center py-4">
+                            <h1 class="h3 mb-0">
+                                <i class="fas fa-leaf me-2"></i>Регистрация в Чайном Клубе
+                            </h1>
+                            <p class="mb-0 mt-2">Присоединяйтесь к сообществу ценителей чая</p>
+                        </div>
+                        
+                        <div class="card-body p-4 p-md-5">
+                            <form id="signup-form">
+                                <h4 class="mb-4 border-bottom pb-3">Личные данные</h4>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="first_name" class="form-label fw-bold">
+                                                Имя <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" id="first_name" name="first_name" 
+                                                   class="form-control" placeholder="Иван" 
+                                                   autocomplete="given-name" required>
+                                            <small class="form-text text-muted small">Ваше имя</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="last_name" class="form-label fw-bold">
+                                                Фамилия <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" id="last_name" name="last_name" 
+                                                   class="form-control" placeholder="Иванов" 
+                                                   autocomplete="family-name" required>
+                                            <small class="form-text text-muted small">Ваша фамилия</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="username" class="form-label fw-bold">Логин</label>
+                                            <input type="text" id="username" name="username" 
+                                                   class="form-control" placeholder="ivanov" 
+                                                   autocomplete="username">
+                                            <small class="form-text text-muted small">Латинские буквы, цифры и подчеркивание</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="email" class="form-label fw-bold">Email</label>
+                                            <input type="email" id="email" name="email" 
+                                                   class="form-control" placeholder="ivan@example.com" 
+                                                   autocomplete="email">
+                                            <small class="form-text text-muted small">На этот email придет подтверждение</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="password" class="form-label fw-bold">
+                                                Пароль <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <input type="password" id="password" name="password" 
+                                                       class="form-control password-input" 
+                                                       autocomplete="new-password" required>
+                                                <button type="button" class="btn btn-outline-secondary password-toggle">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                            <small class="form-text text-muted small">Минимум 6 символов</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="password_repeat" class="form-label fw-bold">
+                                                Подтверждение пароля <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="password" id="password_repeat" name="password_repeat" 
+                                                   class="form-control" autocomplete="new-password" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="phone" class="form-label fw-bold">Телефон</label>
+                                            <input type="tel" id="phone" name="phone" 
+                                                   class="form-control" placeholder="+7 (999) 123-45-67" 
+                                                   autocomplete="tel">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="birth_date" class="form-label fw-bold">Дата рождения</label>
+                                            <input type="date" id="birth_date" name="birth_date" 
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4 class="mb-4 border-bottom pb-3 mt-5">Предпочтения в чае</h4>
+                                
+                                <p class="text-muted mb-3">Выберите виды чая, которые вам нравятся (необязательно):</p>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-6 col-md-4 mb-3">
+                                        <div class="form-check tea-checkbox">
+                                            <input type="checkbox" class="form-check-input" id="tea-green" name="tea_preferences[]" value="green">
+                                            <label class="form-check-label" for="tea-green">
+                                                <i class="fas fa-leaf text-success me-1"></i> Зеленый чай
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4 mb-3">
+                                        <div class="form-check tea-checkbox">
+                                            <input type="checkbox" class="form-check-input" id="tea-black" name="tea_preferences[]" value="black">
+                                            <label class="form-check-label" for="tea-black">
+                                                <i class="fas fa-leaf text-dark me-1"></i> Черный чай
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4 mb-3">
+                                        <div class="form-check tea-checkbox">
+                                            <input type="checkbox" class="form-check-input" id="tea-oolong" name="tea_preferences[]" value="oolong">
+                                            <label class="form-check-label" for="tea-oolong">
+                                                <i class="fas fa-leaf text-warning me-1"></i> Улун
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4 mb-3">
+                                        <div class="form-check tea-checkbox">
+                                            <input type="checkbox" class="form-check-input" id="tea-white" name="tea_preferences[]" value="white">
+                                            <label class="form-check-label" for="tea-white">
+                                                <i class="fas fa-leaf text-secondary me-1"></i> Белый чай
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4 mb-3">
+                                        <div class="form-check tea-checkbox">
+                                            <input type="checkbox" class="form-check-input" id="tea-puer" name="tea_preferences[]" value="puer">
+                                            <label class="form-check-label" for="tea-puer">
+                                                <i class="fas fa-leaf text-brown me-1"></i> Пуэр
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4 mb-3">
+                                        <div class="form-check tea-checkbox">
+                                            <input type="checkbox" class="form-check-input" id="tea-herbal" name="tea_preferences[]" value="herbal">
+                                            <label class="form-check-label" for="tea-herbal">
+                                                <i class="fas fa-leaf text-success me-1"></i> Травяной чай
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-check mb-4">
+                                    <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
+                                    <label class="form-check-label" for="newsletter">
+                                        Да, я хочу получать новости о новых поступлениях и акциях
+                                    </label>
+                                </div>
+                                
+                                <h4 class="mb-4 border-bottom pb-3">Уровень подписки</h4>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card h-100 border-secondary">
+                                            <div class="card-body text-center">
+                                                <div class="text-success mb-3">
+                                                    <i class="fas fa-leaf fa-2x"></i>
+                                                </div>
+                                                <h5 class="card-title">Базовый</h5>
+                                                <p class="text-success fw-bold">Бесплатно</p>
+                                                <ul class="list-unstyled small text-start">
+                                                    <li><i class="fas fa-check text-success me-2"></i> Скидка 5%</li>
+                                                    <li><i class="fas fa-check text-success me-2"></i> Базовые статьи</li>
+                                                    <li><i class="fas fa-check text-success me-2"></i> Открытые мероприятия</li>
+                                                </ul>
+                                                <div class="form-check">
+                                                    <input type="radio" class="form-check-input subscription-radio" 
+                                                           id="subscription-basic" name="subscription_type" value="basic" checked>
+                                                    <label class="form-check-label fw-bold" for="subscription-basic">
+                                                        Выбрать
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card h-100 border-warning">
+                                            <div class="card-body text-center">
+                                                <div class="text-warning mb-3">
+                                                    <i class="fas fa-crown fa-2x"></i>
+                                                </div>
+                                                <h5 class="card-title">Премиум</h5>
+                                                <p class="text-warning fw-bold">990 ₽/мес</p>
+                                                <ul class="list-unstyled small text-start">
+                                                    <li><i class="fas fa-check text-warning me-2"></i> Скидка 15%</li>
+                                                    <li><i class="fas fa-check text-warning me-2"></i> Личный консультант</li>
+                                                    <li><i class="fas fa-check text-warning me-2"></i> Приоритетная доставка</li>
+                                                    <li><i class="fas fa-check text-warning me-2"></i> Закрытые мероприятия</li>
+                                                </ul>
+                                                <div class="form-check">
+                                                    <input type="radio" class="form-check-input subscription-radio" 
+                                                           id="subscription-premium" name="subscription_type" value="premium">
+                                                    <label class="form-check-label fw-bold" for="subscription-premium">
+                                                        Выбрать
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card h-100 border-danger">
+                                            <div class="card-body text-center">
+                                                <div class="text-danger mb-3">
+                                                    <i class="fas fa-gem fa-2x"></i>
+                                                </div>
+                                                <h5 class="card-title">VIP</h5>
+                                                <p class="text-danger fw-bold">4 990 ₽/мес</p>
+                                                <ul class="list-unstyled small text-start">
+                                                    <li><i class="fas fa-check text-danger me-2"></i> Скидка 25%</li>
+                                                    <li><i class="fas fa-check text-danger me-2"></i> Эксклюзивные сорта</li>
+                                                    <li><i class="fas fa-check text-danger me-2"></i> Индивидуальные церемонии</li>
+                                                    <li><i class="fas fa-check text-danger me-2"></i> Персональный мастер</li>
+                                                </ul>
+                                                <div class="form-check">
+                                                    <input type="radio" class="form-check-input subscription-radio" 
+                                                           id="subscription-vip" name="subscription_type" value="vip">
+                                                    <label class="form-check-label fw-bold" for="subscription-vip">
+                                                        Выбрать
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-info">
+                                    <h5><i class="fas fa-gift me-2"></i>Ваши преимущества после регистрации:</h5>
+                                    <ul class="mb-0">
+                                        <li>Подарок при регистрации - набор пробников элитного чая</li>
+                                        <li>Скидка 10% на первую покупку</li>
+                                        <li>Бесплатная доставка при заказе от 2 000 рублей</li>
+                                        <li>Доступ к эксклюзивным сортам чая</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="form-check mb-4 mt-4">
+                                    <input type="checkbox" class="form-check-input" id="agree_terms" name="agree_terms" required>
+                                    <label class="form-check-label" for="agree_terms">
+                                        Я соглашаюсь с <a href="/terms" class="text-tea">условиями использования</a> и <a href="/privacy" class="text-tea">политикой конфиденциальности</a>
+                                    </label>
+                                </div>
+                                
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                                    <button type="submit" class="btn btn-tea btn-lg px-5">
+                                        <i class="fas fa-user-plus me-2"></i>Зарегистрироваться
+                                    </button>
+                                    
+                                    <a href="index.html" class="btn btn-outline-secondary btn-lg">
+                                        <i class="fas fa-home me-2"></i>На главную
+                                    </a>
+                                </div>
+                            </form>
+                            
+                            <div class="text-center mt-4 pt-4 border-top">
+                                <p class="text-muted">Уже есть аккаунт? <a href="login.html" class="text-tea fw-bold">Войти</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-5">
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body text-center p-4">
+                                    <i class="fas fa-leaf fa-3x text-success mb-3"></i>
+                                    <h5 class="mb-3">Экспертная консультация</h5>
+                                    <p class="text-muted mb-0">Наши чайные мастера помогут подобрать идеальный чай именно для вас</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body text-center p-4">
+                                    <i class="fas fa-award fa-3x text-warning mb-3"></i>
+                                    <h5 class="mb-3">Качество гарантировано</h5>
+                                    <p class="text-muted mb-0">Все чаи сертифицированы и поставляются напрямую с плантаций</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body text-center p-4">
+                                    <i class="fas fa-heart fa-3x text-danger mb-3"></i>
+                                    <h5 class="mb-3">Сообщество единомышленников</h5>
+                                    <p class="text-muted mb-0">Присоединяйтесь к нашему клубу любителей чая</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Переключение видимости пароля
+            document.querySelectorAll('.password-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const input = this.closest('.input-group').querySelector('input');
+                    const icon = this.querySelector('i');
+                    
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        input.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            });
+            
+            // Выделение выбранной карточки подписки
+            document.querySelectorAll('.subscription-radio').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    // Удаляем выделение со всех карточек
+                    document.querySelectorAll('.card').forEach(card => {
+                        card.classList.remove('border-primary');
+                    });
+                    
+                    // Добавляем выделение выбранной карточке
+                    this.closest('.card').classList.add('border-primary');
+                });
+            });
+            
+            // Инициализация выбранной карточки (базовая по умолчанию)
+            document.querySelector('.subscription-radio:checked').closest('.card').classList.add('border-primary');
+            
+            // Установка минимальной даты рождения (14 лет)
+            const birthDateInput = document.getElementById('birth_date');
+            if (birthDateInput) {
+                const today = new Date();
+                const minDate = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+                const maxDate = new Date(today.getFullYear() - 14, today.getMonth(), today.getDate());
+                
+                birthDateInput.min = minDate.toISOString().split('T')[0];
+                birthDateInput.max = maxDate.toISOString().split('T')[0];
+            }
+            
+            // Проверка совпадения паролей
+            const passwordInput = document.getElementById('password');
+            const passwordRepeatInput = document.getElementById('password_repeat');
+            
+            function validatePasswords() {
+                if (passwordRepeatInput.value && passwordInput.value !== passwordRepeatInput.value) {
+                    passwordRepeatInput.classList.add('is-invalid');
+                    return false;
+                } else {
+                    passwordRepeatInput.classList.remove('is-invalid');
+                    return true;
+                }
+            }
+            
+            passwordInput.addEventListener('input', validatePasswords);
+            passwordRepeatInput.addEventListener('input', validatePasswords);
+            
+            // Обработка формы регистрации
+            const signupForm = document.getElementById('signup-form');
+            signupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Базовая валидация
+                const requiredFields = ['first_name', 'last_name', 'password'];
+                let isValid = true;
+                
+                requiredFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (!field.value.trim()) {
+                        field.classList.add('is-invalid');
+                        isValid = false;
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+                
+                // Проверка паролей
+                if (!validatePasswords()) {
+                    isValid = false;
+                }
+                
+                // Проверка согласия с условиями
+                const agreeTerms = document.getElementById('agree_terms');
+                if (!agreeTerms.checked) {
+                    agreeTerms.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    agreeTerms.classList.remove('is-invalid');
+                }
+                
+                if (!isValid) {
+                    alert('Пожалуйста, заполните все обязательные поля правильно');
+                    return;
+                }
+                
+                // В реальном приложении здесь будет AJAX запрос
+                // Для демо просто перенаправляем на welcome страницу
+                window.location.href = 'welcome.html';
+            });
+        });
+    </script>
+</body>
+</html>

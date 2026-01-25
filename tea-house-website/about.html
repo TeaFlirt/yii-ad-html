@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нашей чайной лавке</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* Стили для страницы "О нас" */
+        :root {
+            --tea-green: #2E8B57;
+            --tea-brown: #8B4513;
+            --tea-gold: #DAA520;
+            --tea-light: #F5F5DC;
+        }
+        
+        .about-hero {
+            background: linear-gradient(135deg, var(--tea-green) 0%, var(--tea-brown) 100%);
+            color: white;
+            padding: 100px 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .text-tea-brown {
+            color: var(--tea-brown) !important;
+        }
+        
+        .text-tea-green {
+            color: var(--tea-green) !important;
+        }
+        
+        .bg-tea-light {
+            background-color: var(--tea-light) !important;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--tea-green);
+        }
+        
+        .stat-label {
+            color: var(--tea-brown);
+            font-size: 1.1rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .value-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .value-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--tea-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--tea-green);
+        }
+        
+        /* Таймлайн */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--tea-green);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-item.odd .timeline-content {
+            margin-right: auto;
+            margin-left: 0;
+        }
+        
+        .timeline-item.even .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--tea-green);
+            margin-bottom: 10px;
+        }
+        
+        /* Карточки команды */
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .team-card > div {
+            padding: 25px;
+        }
+        
+        .team-skills {
+            margin-top: 20px;
+        }
+        
+        .skill-badge {
+            display: inline-block;
+            background: var(--tea-light);
+            color: var(--tea-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        /* Карусель */
+        .carousel-caption {
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+        }
+        
+        .cursor-pointer {
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-content {
+                width: 90%;
+                margin: 0 auto 20px !important;
+            }
+            
+            .timeline-dot {
+                display: none;
+            }
+            
+            .about-hero {
+                padding: 60px 0;
+                text-align: center;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Герой секция -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">О нашей чайной лавке</h1>
+                    <p class="lead mb-4">Более 10 лет мы открываем людям искусство чайной церемонии и делимся лучшими сортами чая со всего мира.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#contact-section" class="btn btn-light btn-lg px-4">
+                            <i class="fas fa-store me-2"></i>Посетить лавку
+                        </a>
+                        <a href="contact.html" class="btn btn-outline-light btn-lg px-4">
+                            <i class="fas fa-calendar-alt me-2"></i>Записаться на церемонию
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/images/about/tea-ceremony.jpg" alt="Чайная церемония" class="img-fluid rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Миссия -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <img src="/images/about/tea-leaves.jpg" alt="Чайные листья" class="img-fluid rounded shadow-lg">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Наша миссия</h2>
+                    <p class="lead text-tea-brown mb-4">
+                        Мы стремимся привнести культуру настоящего чая в жизнь каждого человека. 
+                        Наша цель - не просто продавать чай, а обучать искусству чайной церемонии.
+                    </p>
+                    <p class="mb-4">
+                        Мы верим, что правильное заваривание чая - это медитация, способная подарить 
+                        покой и гармонию в современном ритме жизни. Каждая чашка в нашей лавке - это 
+                        история, традиция и искусство.
+                    </p>
+                    <div class="row g-4 mt-4">
+                        <div class="col-md-6">
+                            <div class="stat-item">
+                                <div class="stat-number">200+</div>
+                                <div class="stat-label">Сортов чая</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="stat-item">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">Стран-поставщиков</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ценности -->
+            <div class="mt-5">
+                <h2 class="text-center mb-5">Наши ценности</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4 class="mb-3">Качество</h4>
+                        <p class="text-muted">Только оригинальные сорта с сертифицированных плантаций. Мы лично проверяем каждый урожай.</p>
+                    </div>
+                    
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 class="mb-3">Сообщество</h4>
+                        <p class="text-muted">Более 50,000 любителей чая объединились в нашем клубе. Проводим встречи и мастер-классы.</p>
+                    </div>
+                    
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4 class="mb-3">Экология</h4>
+                        <p class="text-muted">Устойчивое земледелие, биоразлагаемая упаковка и поддержка экологических проектов.</p>
+                    </div>
+                    
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h4 class="mb-3">Знания</h4>
+                        <p class="text-muted">Делимся многовековыми традициями и современными исследованиями о пользе чая.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Хронология -->
+    <section class="py-5 bg-light" id="history-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Наш путь</h2>
+            <div class="timeline">
+                <!-- 2010 -->
+                <div class="timeline-item odd">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">
+                            <i class="fas fa-store"></i>
+                            2010
+                        </div>
+                        <p>Основание чайной лавки в самом сердце Москвы</p>
+                    </div>
+                </div>
+                
+                <!-- 2012 -->
+                <div class="timeline-item even">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">
+                            <i class="fas fa-mortar-pestle"></i>
+                            2012
+                        </div>
+                        <p>Открытие первой чайной церемонии и начало мастер-классов</p>
+                    </div>
+                </div>
+                
+                <!-- 2015 -->
+                <div class="timeline-item odd">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">
+                            <i class="fas fa-map-marker-alt"></i>
+                            2015
+                        </div>
+                        <p>Экспансия в 5 городов России</p>
+                    </div>
+                </div>
+                
+                <!-- 2018 -->
+                <div class="timeline-item even">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">
+                            <i class="fas fa-shopping-cart"></i>
+                            2018
+                        </div>
+                        <p>Запуск онлайн-магазина и доставки по всей России</p>
+                    </div>
+                </div>
+                
+                <!-- 2020 -->
+                <div class="timeline-item odd">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">
+                            <i class="fas fa-graduation-cap"></i>
+                            2020
+                        </div>
+                        <p>Открытие чайной школы и сертификационных программ</p>
+                    </div>
+                </div>
+                
+                <!-- 2023 -->
+                <div class="timeline-item even">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">
+                            <i class="fas fa-handshake"></i>
+                            2023
+                        </div>
+                        <p>Партнерство с плантациями в Китае, Индии и Японии</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Команда -->
+    <section class="py-5" id="team-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Наша команда</h2>
+            <div class="row g-4">
+                <!-- Чжан Вей -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <img src="/images/team/tea-master.jpg" alt="Чжан Вей" class="team-img">
+                        <div>
+                            <h4 class="mb-2">Чжан Вей</h4>
+                            <p class="text-tea-green fw-bold mb-2">Главный чайный мастер</p>
+                            <p class="text-muted mb-3">Опыт: 20 лет</p>
+                            <p class="mb-3">Потомственный чайный мастер из провинции Фуцзянь</p>
+                            <div class="team-skills">
+                                <span class="skill-badge">Гунфу Ча</span>
+                                <span class="skill-badge">Тай цзи</span>
+                                <span class="skill-badge">Дегустация</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Анна Петрова -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <img src="/images/team/sommelier.jpg" alt="Анна Петрова" class="team-img">
+                        <div>
+                            <h4 class="mb-2">Анна Петрова</h4>
+                            <p class="text-tea-green fw-bold mb-2">Чайный сомелье</p>
+                            <p class="text-muted mb-3">Опыт: 8 лет</p>
+                            <p class="mb-3">Сертифицированный дегустатор, победитель конкурса Tea Masters Cup</p>
+                            <div class="team-skills">
+                                <span class="skill-badge">Дегустация</span>
+                                <span class="skill-badge">Подбор чая</span>
+                                <span class="skill-badge">Обучение</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Михаил Соколов -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <img src="/images/team/barista.jpg" alt="Михаил Соколов" class="team-img">
+                        <div>
+                            <h4 class="mb-2">Михаил Соколов</h4>
+                            <p class="text-tea-green fw-bold mb-2">Шеф-бариста</p>
+                            <p class="text-muted mb-3">Опыт: 6 лет</p>
+                            <p class="mb-3">Специалист по современным чайным напиткам и коктейлям</p>
+                            <div class="team-skills">
+                                <span class="skill-badge">Чайные коктейли</span>
+                                <span class="skill-badge">Холодные заварки</span>
+                                <span class="skill-badge">Презентация</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сертификаты и достижения -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <h2 class="text-center mb-5">Наши достижения</h2>
+            <div class="row g-4">
+                <div class="col-md-3 text-center">
+                    <i class="fas fa-award fa-3x text-tea-gold mb-3"></i>
+                    <h4>Лучшая чайная лавка 2023</h4>
+                    <p class="text-muted">По версии Tea Time Magazine</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <i class="fas fa-certificate fa-3x text-tea-gold mb-3"></i>
+                    <h4>Organic Certificate</h4>
+                    <p class="text-muted">Сертификат органического производства</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <i class="fas fa-star fa-3x text-tea-gold mb-3"></i>
+                    <h4>4.9/5 оценка</h4>
+                    <p class="text-muted">Средняя оценка наших клиентов</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <i class="fas fa-heart fa-3x text-tea-gold mb-3"></i>
+                    <h4>Экологичный бизнес</h4>
+                    <p class="text-muted">Награда за устойчивое развитие</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Галерея -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Жизнь в чайной лавке</h2>
+            
+            <!-- Карусель Bootstrap 5 -->
+            <div id="galleryCarousel" class="carousel slide shadow-lg rounded overflow-hidden" data-bs-ride="carousel">
+                <!-- Индикаторы -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+                
+                <!-- Слайды -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/images/gallery/ceremony-1.jpg" class="d-block w-100" alt="Чайная церемония" style="height: 500px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-4">
+                            <h5>Традиционная чайная церемония</h5>
+                            <p>Погружение в искусство китайской чайной церемонии Гунфу Ча</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/images/gallery/masterclass.jpg" class="d-block w-100" alt="Мастер-класс" style="height: 500px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-4">
+                            <h5>Мастер-класс по завариванию чая</h5>
+                            <p>Обучение правильному завариванию разных сортов чая</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/images/gallery/interior.jpg" class="d-block w-100" alt="Интерьер" style="height: 500px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-4">
+                            <h5>Уютный интерьер нашей лавки</h5>
+                            <p>Традиционный китайский стиль с современным комфортом</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/images/gallery/tea-selection.jpg" class="d-block w-100" alt="Выбор чая" style="height: 500px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-4">
+                            <h5>Экспертная консультация по выбору чая</h5>
+                            <p>Наши специалисты помогут выбрать идеальный чай для вас</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Кнопки управления -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Предыдущий</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Следующий</span>
+                </button>
+            </div>
+            
+            <!-- Миниатюры -->
+            <div class="row mt-4 g-2">
+                <div class="col-3">
+                    <img src="/images/gallery/ceremony-1.jpg" class="img-fluid rounded cursor-pointer" 
+                         data-bs-target="#galleryCarousel" data-bs-slide-to="0" alt="Церемония миниатюра"
+                         style="height: 100px; width: 100%; object-fit: cover;">
+                </div>
+                <div class="col-3">
+                    <img src="/images/gallery/masterclass.jpg" class="img-fluid rounded cursor-pointer" 
+                         data-bs-target="#galleryCarousel" data-bs-slide-to="1" alt="Мастер-класс миниатюра"
+                         style="height: 100px; width: 100%; object-fit: cover;">
+                </div>
+                <div class="col-3">
+                    <img src="/images/gallery/interior.jpg" class="img-fluid rounded cursor-pointer" 
+                         data-bs-target="#galleryCarousel" data-bs-slide-to="2" alt="Интерьер миниатюра"
+                         style="height: 100px; width: 100%; object-fit: cover;">
+                </div>
+                <div class="col-3">
+                    <img src="/images/gallery/tea-selection.jpg" class="img-fluid rounded cursor-pointer" 
+                         data-bs-target="#galleryCarousel" data-bs-slide-to="3" alt="Выбор чая миниатюра"
+                         style="height: 100px; width: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Призыв к действию -->
+    <section class="py-5 bg-tea-light">
+        <div class="container text-center">
+            <h2 class="mb-4">Присоединяйтесь к нашему чайному путешествию</h2>
+            <p class="lead mb-4">Зарегистрируйтесь в чайном клубе и получите эксклюзивные преимущества</p>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="signup.html" class="btn btn-primary btn-lg px-4">
+                    <i class="fas fa-user-plus me-2"></i>Зарегистрироваться
+                </a>
+                <a href="contact.html" class="btn btn-outline-primary btn-lg px-4">
+                    <i class="fas fa-calendar me-2"></i>Записаться на дегустацию
+                </a>
+                <a href="tea.html" class="btn btn-success btn-lg px-4">
+                    <i class="fas fa-shopping-cart me-2"></i>Каталог чая
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимация появления элементов при скролле
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Наблюдаем за элементами
+            document.querySelectorAll('.timeline-item, .value-item, .team-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Плавный скролл к секциям
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#') && href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Обработка кликов на миниатюры карусели
+            document.querySelectorAll('.cursor-pointer').forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const slideTo = this.getAttribute('data-bs-slide-to');
+                    const carousel = bootstrap.Carousel.getInstance(document.getElementById('galleryCarousel'));
+                    if (carousel) {
+                        carousel.to(parseInt(slideTo));
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

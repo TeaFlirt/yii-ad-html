@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чайная Лавка - Главная</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('/images/hero/tea-background.jpg') center/cover no-repeat;
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tea-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+        }
+        
+        .tea-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+        }
+        
+        .tea-icon {
+            width: 80px;
+            height: 80px;
+            background: #F5F5DC;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 2rem;
+        }
+        
+        .green-tea { color: #2E8B57; }
+        .black-tea { color: #8B4513; }
+        .oolong-tea { color: #D2691E; }
+        .puer-tea { color: #654321; }
+        .herbal-tea { color: #228B22; }
+        .fruit-tea { color: #DC143C; }
+        
+        .tea-features {
+            background: linear-gradient(135deg, #F5F5DC 0%, #E8F5E9 100%);
+            padding: 80px 0;
+        }
+        
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            padding: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tea-features {
+                padding: 50px 0;
+            }
+            
+            .tea-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Герой-секция -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-4 mb-4">Чайная Лавка "Восточная Мудрость"</h1>
+            <p class="lead mb-4">Откройте для себя мир изысканных чаев со всего света</p>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="tea.html" class="btn btn-primary btn-lg px-4">Выбрать чай</a>
+                <a href="about.html" class="btn btn-outline-light btn-lg px-4">Узнать больше</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Виды чая -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Наша коллекция чая</h2>
+            <div class="row g-4">
+                <!-- Зеленый чай -->
+                <div class="col-md-4 col-lg-2">
+                    <div class="card tea-card text-center shadow-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="tea-icon mb-3">
+                                <i class="fas fa-leaf green-tea"></i>
+                            </div>
+                            <h5 class="card-title">Зеленый чай</h5>
+                            <p class="card-text small flex-grow-1">Нежный и освежающий</p>
+                            <a href="tea.html" class="btn btn-sm btn-outline-primary mt-2">Попробовать</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Черный чай -->
+                <div class="col-md-4 col-lg-2">
+                    <div class="card tea-card text-center shadow-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="tea-icon mb-3">
+                                <i class="fas fa-mug-hot black-tea"></i>
+                            </div>
+                            <h5 class="card-title">Черный чай</h5>
+                            <p class="card-text small flex-grow-1">Крепкий и бодрящий</p>
+                            <a href="tea.html" class="btn btn-sm btn-outline-primary mt-2">Попробовать</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Улун -->
+                <div class="col-md-4 col-lg-2">
+                    <div class="card tea-card text-center shadow-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="tea-icon mb-3">
+                                <i class="fas fa-seedling oolong-tea"></i>
+                            </div>
+                            <h5 class="card-title">Улун</h5>
+                            <p class="card-text small flex-grow-1">Сбалансированный и ароматный</p>
+                            <a href="tea.html" class="btn btn-sm btn-outline-primary mt-2">Попробовать</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Пуэр -->
+                <div class="col-md-4 col-lg-2">
+                    <div class="card tea-card text-center shadow-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="tea-icon mb-3">
+                                <i class="fas fa-wine-bottle puer-tea"></i>
+                            </div>
+                            <h5 class="card-title">Пуэр</h5>
+                            <p class="card-text small flex-grow-1">Выдержанный и глубокий</p>
+                            <a href="tea.html" class="btn btn-sm btn-outline-primary mt-2">Попробовать</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Травяной чай -->
+                <div class="col-md-4 col-lg-2">
+                    <div class="card tea-card text-center shadow-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="tea-icon mb-3">
+                                <i class="fas fa-spa herbal-tea"></i>
+                            </div>
+                            <h5 class="card-title">Травяной чай</h5>
+                            <p class="card-text small flex-grow-1">Полезный и успокаивающий</p>
+                            <a href="tea.html" class="btn btn-sm btn-outline-primary mt-2">Попробовать</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Фруктовый чай -->
+                <div class="col-md-4 col-lg-2">
+                    <div class="card tea-card text-center shadow-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="tea-icon mb-3">
+                                <i class="fas fa-apple-alt fruit-tea"></i>
+                            </div>
+                            <h5 class="card-title">Фруктовый чай</h5>
+                            <p class="card-text small flex-grow-1">Яркий и вкусный</p>
+                            <a href="tea.html" class="btn btn-sm btn-outline-primary mt-2">Попробовать</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="tea-features">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4 text-center mb-4">
+                    <i class="fas fa-leaf fa-3x text-success mb-3"></i>
+                    <h4>Экологически чистый</h4>
+                    <p class="text-muted">Все чаи выращены без химикатов</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <i class="fas fa-shipping-fast fa-3x text-primary mb-3"></i>
+                    <h4>Быстрая доставка</h4>
+                    <p class="text-muted">Доставка по всему городу за 2 часа</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <i class="fas fa-award fa-3x text-warning mb-3"></i>
+                    <h4>Высшее качество</h4>
+                    <p class="text-muted">Сертифицированные чайные плантации</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Карусель отзывов -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Отзывы наших гостей</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div id="testimonialCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- Отзыв 1 -->
+                            <div class="carousel-item active">
+                                <div class="text-center p-5 bg-light rounded">
+                                    <i class="fas fa-quote-left fa-2x text-muted mb-4"></i>
+                                    <p class="lead fst-italic">"Лучший зеленый чай, который я пробовал! Атмосфера в чайной лавке непередаваемая."</p>
+                                    <p class="fw-bold">— Алексей, постоянный клиент</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Отзыв 2 -->
+                            <div class="carousel-item">
+                                <div class="text-center p-5 bg-light rounded">
+                                    <i class="fas fa-quote-left fa-2x text-muted mb-4"></i>
+                                    <p class="lead fst-italic">"Атмосфера уюта и спокойствия. Обожаю это место! Особенно понравились чайные церемонии."</p>
+                                    <p class="fw-bold">— Мария, чайный критик</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Отзыв 3 -->
+                            <div class="carousel-item">
+                                <div class="text-center p-5 bg-light rounded">
+                                    <i class="fas fa-quote-left fa-2x text-muted mb-4"></i>
+                                    <p class="lead fst-italic">"Отличный выбор пуэров. Персонал очень знающий, всегда помогут с выбором."</p>
+                                    <p class="fw-bold">— Сергей, коллекционер чая</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Кнопки управления -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Предыдущий</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Следующий</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Специальное предложение -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h3>Присоединяйтесь к чайному клубу!</h3>
+                    <p class="lead mb-0">Получите скидку 10% на первую покупку при регистрации.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="signup.html" class="btn btn-light btn-lg px-4">Зарегистрироваться</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимация карточек с чаем
+            const teaCards = document.querySelectorAll('.tea-card');
+            teaCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Автоматическая прокрутка карусели
+            const carousel = new bootstrap.Carousel(document.getElementById('testimonialCarousel'), {
+                interval: 5000,
+                wrap: true
+            });
+        });
+    </script>
+</body>
+</html>

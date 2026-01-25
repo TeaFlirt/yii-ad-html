@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в Чайный Клуб</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --tea-green: #2E8B57;
+            --tea-light: #F5F5DC;
+        }
+        
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--tea-light) 0%, #E8F5E9 100%);
+            padding: 20px;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 450px;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .login-header {
+            background: linear-gradient(135deg, var(--tea-green) 0%, #1E6B42 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .tea-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+        
+        .login-body {
+            padding: 40px 30px;
+        }
+        
+        .btn-auth {
+            background: var(--tea-green);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-auth:hover {
+            background: #1E6B42;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
+        }
+        
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            color: #6c757d;
+        }
+        
+        .auth-divider::before,
+        .auth-divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .auth-divider span {
+            padding: 0 15px;
+            font-size: 0.9rem;
+        }
+        
+        .social-auth {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .social-google {
+            background: #fff;
+            color: #757575;
+            border: 1px solid #ddd;
+        }
+        
+        .social-google:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .social-vk {
+            background: #4C75A3;
+            color: white;
+        }
+        
+        .social-vk:hover {
+            background: #3a5a80;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 117, 163, 0.3);
+        }
+        
+        .auth-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .forgot-password {
+            color: var(--tea-green);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        .auth-link {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .text-tea-green {
+            color: var(--tea-green) !important;
+        }
+        
+        .login-footer {
+            background: var(--tea-light);
+            padding: 20px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--tea-green);
+            box-shadow: 0 0 0 0.25rem rgba(46, 139, 87, 0.25);
+        }
+        
+        @media (max-width: 576px) {
+            .login-card {
+                max-width: 100%;
+            }
+            
+            .login-header,
+            .login-body {
+                padding: 30px 20px;
+            }
+            
+            .auth-options {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-page">
+        <div class="container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="tea-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h1>Чайный Клуб</h1>
+                    <p class="mb-0">Войдите, чтобы продолжить ваше чайное путешествие</p>
+                </div>
+                
+                <div class="login-body">
+                    <form id="login-form">
+                        <div class="form-group mb-3">
+                            <label for="username" class="form-label">Логин или Email</label>
+                            <input type="text" id="username" class="form-control form-control-lg" 
+                                   placeholder="Введите логин или email" required autofocus>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="password" class="form-label">Пароль</label>
+                            <div class="input-group">
+                                <input type="password" id="password" class="form-control form-control-lg" 
+                                       placeholder="Введите ваш пароль" required>
+                                <button type="button" class="btn btn-outline-secondary password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="auth-options">
+                            <div class="remember-me">
+                                <div class="form-check">
+                                    <input type="checkbox" id="rememberMe" class="form-check-input">
+                                    <label class="form-check-label" for="rememberMe">
+                                        Запомнить меня
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <a href="forgot-password.html" class="forgot-password">
+                                Забыли пароль?
+                            </a>
+                        </div>
+
+                        <div class="d-grid gap-2 mb-3">
+                            <button type="submit" class="btn btn-auth btn-lg">
+                                <i class="fas fa-sign-in-alt me-2"></i>Войти
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="auth-divider">
+                        <span>или войдите через</span>
+                    </div>
+
+                    <div class="social-auth mb-3">
+                        <a href="#" class="social-btn social-google">
+                            <i class="fab fa-google me-2"></i> Продолжить с Google
+                        </a>
+                        <a href="#" class="social-btn social-vk">
+                            <i class="fab fa-vk me-2"></i> Продолжить с ВКонтакте
+                        </a>
+                    </div>
+
+                    <div class="auth-link text-center">
+                        Нет аккаунта? 
+                        <a href="signup.html" class="text-tea-green fw-bold">Зарегистрироваться</a>
+                    </div>
+                </div>
+                
+                <div class="login-footer text-center py-3">
+                    <small class="text-muted">
+                        Входя в аккаунт, вы соглашаетесь с 
+                        <a href="terms.html" class="text-tea-green">Условиями использования</a>
+                         и 
+                        <a href="privacy.html" class="text-tea-green">Политикой конфиденциальности</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Минимальный JavaScript для переключения видимости пароля
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимация появления формы
+            const loginCard = document.querySelector('.login-card');
+            loginCard.style.opacity = '0';
+            setTimeout(() => {
+                loginCard.style.transition = 'opacity 0.6s';
+                loginCard.style.opacity = '1';
+            }, 100);
+            
+            // Переключение видимости пароля
+            const passwordToggle = document.querySelector('.password-toggle');
+            if (passwordToggle) {
+                passwordToggle.addEventListener('click', function() {
+                    const input = this.closest('.input-group').querySelector('input');
+                    const icon = this.querySelector('i');
+                    
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                        this.title = 'Скрыть пароль';
+                    } else {
+                        input.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                        this.title = 'Показать пароль';
+                    }
+                });
+            }
+            
+            // Обработка формы входа
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Простая валидация
+                    const username = document.getElementById('username').value.trim();
+                    const password = document.getElementById('password').value;
+                    
+                    if (!username || !password) {
+                        alert('Пожалуйста, заполните все обязательные поля');
+                        return;
+                    }
+                    
+                    // В реальном приложении здесь будет AJAX запрос
+                    // Для демо просто перенаправляем на welcome страницу
+                    window.location.href = 'welcome.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добро пожаловать в Чайный Клуб!</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --tea-green: #2E8B57;
+            --tea-light: #F5F5DC;
+            --tea-gold: #DAA520;
+        }
+        
+        .welcome-hero {
+            background: linear-gradient(135deg, var(--tea-green) 0%, #1E6B42 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .welcome-icon {
+            width: 120px;
+            height: 120px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 3rem;
+        }
+        
+        .welcome-page {
+            padding: 50px 0;
+            background: var(--tea-light);
+        }
+        
+        .welcome-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: -60px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .text-tea-green {
+            color: var(--tea-green) !important;
+        }
+        
+        .btn-tea {
+            background-color: var(--tea-green);
+            color: white;
+            border: none;
+        }
+        
+        .btn-tea:hover {
+            background-color: #1E6B42;
+            color: white;
+        }
+        
+        .btn-outline-tea {
+            border-color: var(--tea-green);
+            color: var(--tea-green);
+        }
+        
+        .btn-outline-tea:hover {
+            background-color: var(--tea-green);
+            color: white;
+        }
+        
+        .bg-tea-light {
+            background-color: var(--tea-light) !important;
+        }
+        
+        .next-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            text-decoration: none !important;
+            color: inherit;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            display: block;
+        }
+        
+        .step-card:hover {
+            border-color: var(--tea-green);
+            transform: translateY(-10px);
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--tea-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            color: var(--tea-green);
+        }
+        
+        .achievements {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .achievement-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .badge-item {
+            text-align: center;
+        }
+        
+        .achievement-badge {
+            width: 80px;
+            height: 80px;
+            background: var(--tea-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--tea-green);
+            margin: 0 auto 10px;
+            transition: all 0.3s;
+        }
+        
+        .achievement-badge.locked {
+            color: #ccc;
+            background: #f8f9fa;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn-action {
+            min-width: 180px;
+            padding: 12px 25px;
+            font-weight: 500;
+        }
+        
+        .user-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+        
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--tea-light) 0%, #E8F5E9 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .progress-bar {
+            background-color: var(--tea-green);
+        }
+        
+        .tip-item {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--tea-light);
+        }
+        
+        .tip-item:last-child {
+            border-bottom: none;
+        }
+        
+        @media (max-width: 768px) {
+            .welcome-hero {
+                padding: 80px 0 60px;
+            }
+            
+            .welcome-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .welcome-card {
+                padding: 25px;
+                margin-top: -40px;
+            }
+            
+            .next-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-action {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .text-center .btn-lg {
+                width: 100%;
+                margin-bottom: 10px;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            .text-center .btn-lg + .btn-lg {
+                margin-top: 10px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .welcome-card {
+                padding: 20px;
+                margin-top: -30px;
+            }
+            
+            .user-info-section .card {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="welcome-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="welcome-icon mb-4">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h1 class="display-4 fw-bold mb-3">Добро пожаловать, Иван!</h1>
+                    <p class="lead mb-0">Ваш аккаунт успешно создан и активирован</p>
+                    <div class="mt-4">
+                        <span class="badge bg-light text-success fs-6 fw-normal">
+                            <i class="fas fa-user-check me-1"></i> Подтвержденный пользователь
+                        </span>
+                        <span class="badge bg-warning text-dark fs-6 fw-normal ms-2">
+                            <i class="fas fa-crown me-1"></i> Базовый уровень
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="welcome-page">
+        <div class="container">
+            <div class="welcome-card">
+                <div class="text-center mb-5">
+                    <h2 class="mb-3">Начните свое чайное путешествие</h2>
+                    <p class="text-muted">Ваш аккаунт готов к использованию. Вы можете сразу начать делать заказы.</p>
+                </div>
+                
+                <div class="alert alert-success border-0 shadow-sm">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-check-circle fa-2x"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="alert-heading mb-2">Регистрация завершена успешно!</h5>
+                            <p class="mb-0">Мы отправили подтверждение на email <strong>ivan@example.com</strong>. 
+                            Проверьте свою почту и ознакомьтесь с приветственным письмом.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Информация о пользователе -->
+                <div class="user-info-section mt-5">
+                    <h3 class="text-center mb-4">Ваш профиль</h3>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="user-avatar mb-3">
+                                        <div class="avatar-placeholder rounded-circle bg-tea-light mx-auto d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-user text-tea-green fa-2x"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title">ivanov</h5>
+                                    <p class="text-muted small">Имя пользователя</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-user-circle fa-2x text-tea-green"></i>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-0">Личные данные</h6>
+                                        </div>
+                                    </div>
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-2">
+                                            <i class="fas fa-user me-2 text-muted"></i>
+                                            Иван Иванов
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-envelope me-2 text-muted"></i>
+                                            ivan@example.com
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-phone me-2 text-muted"></i>
+                                            +7 (999) 123-45-67
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-gift fa-2x text-tea-green"></i>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-0">Ваши преимущества</h6>
+                                        </div>
+                                    </div>
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-2">
+                                            <i class="fas fa-percent me-2 text-success"></i>
+                                            <strong>10% скидка</strong>
+                                            <div class="small text-muted">На первую покупку</div>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-tag me-2 text-success"></i>
+                                            <strong>5% скидка</strong>
+                                            <div class="small text-muted">По вашей подписке</div>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-shipping-fast me-2 text-success"></i>
+                                            <strong>Бесплатная доставка</strong>
+                                            <div class="small text-muted">От 2 000 рублей</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Следующие шаги -->
+                <div class="next-steps-section mt-5">
+                    <h3 class="text-center mb-4">Что сделать дальше?</h3>
+                    <p class="text-center text-muted mb-5">Эти шаги помогут вам быстрее освоиться в чайном клубе</p>
+                    
+                    <div class="next-steps">
+                        <a href="tea.html" class="step-card">
+                            <div class="step-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h4>Сделайте первый заказ</h4>
+                            <p>Используйте скидку 10% на первую покупку</p>
+                            <div class="step-action">
+                                <span class="btn btn-tea btn-sm">Перейти в магазин</span>
+                            </div>
+                        </a>
+                        
+                        <a href="profile.html" class="step-card">
+                            <div class="step-icon">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <h4>Заполните профиль</h4>
+                            <p>Добавьте адрес для быстрой доставки</p>
+                            <div class="step-action">
+                                <span class="btn btn-outline-tea btn-sm">Редактировать</span>
+                            </div>
+                        </a>
+                        
+                        <a href="tea.html" class="step-card">
+                            <div class="step-icon">
+                                <i class="fas fa-mug-hot"></i>
+                            </div>
+                            <h4>Изучите каталог чая</h4>
+                            <p>Откройте для себя 500+ сортов чая</p>
+                            <div class="step-action">
+                                <span class="btn btn-outline-tea btn-sm">Каталог</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Быстрые действия -->
+                <div class="quick-actions mt-5">
+                    <h3 class="text-center mb-4">Быстрые действия</h3>
+                    <div class="action-buttons">
+                        <a href="index.html" class="btn btn-action btn-outline-secondary">
+                            <i class="fas fa-home me-2"></i>Главная
+                        </a>
+                        <a href="profile.html" class="btn btn-action btn-tea">
+                            <i class="fas fa-user me-2"></i>Мой профиль
+                        </a>
+                        <a href="cart.html" class="btn btn-action btn-outline-tea">
+                            <i class="fas fa-shopping-bag me-2"></i>Корзина
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Достижения -->
+                <div class="achievements mt-5">
+                    <h3 class="text-center mb-4">Ваши достижения</h3>
+                    <p class="text-center text-muted mb-4">Вы уже заработали первые достижения!</p>
+                    <div class="achievement-badges">
+                        <div class="badge-item">
+                            <div class="achievement-badge">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="badge-label">Новичок</div>
+                        </div>
+                        <div class="badge-item">
+                            <div class="achievement-badge">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="badge-label">Чайный любитель</div>
+                        </div>
+                        <div class="badge-item">
+                            <div class="achievement-badge locked">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <div class="badge-label">Эксперт</div>
+                        </div>
+                        <div class="badge-item">
+                            <div class="achievement-badge locked">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="badge-label">Мастер</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Приветственное сообщение -->
+                <div class="welcome-message mt-5">
+                    <div class="text-center">
+                        <i class="fas fa-quote-left fa-2x text-muted mb-3"></i>
+                        <p class="lead">"Чай - это не просто напиток. Это искусство, которое требует знаний, времени и души. 
+                        Рады видеть вас в нашем клубе, где мы вместе открываем мир чайных традиций."</p>
+                        <p class="fw-bold">— Команда Чайного Клуба</p>
+                    </div>
+                </div>
+                
+                <!-- Кнопки навигации -->
+                <div class="text-center mt-5 pt-4 border-top">
+                    <a href="index.html" class="btn btn-primary btn-lg px-5">
+                        <i class="fas fa-home me-2"></i>Перейти на главную
+                    </a>
+                    <a href="tea.html" class="btn btn-success btn-lg px-5 ms-3">
+                        <i class="fas fa-shopping-cart me-2"></i>Начать покупки
+                    </a>
+                    <a href="profile.html" class="btn btn-outline-primary btn-lg px-5 ms-3">
+                        <i class="fas fa-user-cog me-2"></i>Настройки профиля
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Полезная информация -->
+            <div class="row mt-5">
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-4">
+                                <i class="fas fa-question-circle text-tea-green me-2"></i>Нужна помощь?
+                            </h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <a href="faq.html" class="text-decoration-none text-tea-green">
+                                        <i class="fas fa-chevron-right me-2"></i>Часто задаваемые вопросы
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="how-to-order.html" class="text-decoration-none text-tea-green">
+                                        <i class="fas fa-chevron-right me-2"></i>Как сделать заказ?
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="delivery.html" class="text-decoration-none text-tea-green">
+                                        <i class="fas fa-chevron-right me-2"></i>Доставка и оплата
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="contact.html" class="text-decoration-none text-tea-green">
+                                        <i class="fas fa-chevron-right me-2"></i>Связаться с нами
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-4">
+                                <i class="fas fa-lightbulb text-tea-green me-2"></i>Полезные советы
+                            </h5>
+                            <div class="tip-item mb-3">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-check-circle text-success mt-1 me-2"></i>
+                                    <div>
+                                        <strong>Ваша скидка 10%</strong>
+                                        <p class="small mb-0">Действует 7 дней с момента регистрации</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tip-item mb-3">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-check-circle text-success mt-1 me-2"></i>
+                                    <div>
+                                        <strong>Набор пробников</strong>
+                                        <p class="small mb-0">Добавлен в вашу корзину автоматически</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-check-circle text-success mt-1 me-2"></i>
+                                    <div>
+                                        <strong>Подпишитесь на рассылку</strong>
+                                        <p class="small mb-0">Получайте уведомления об акциях и новинках</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимация появления карточек
+            const welcomeCard = document.querySelector('.welcome-card');
+            welcomeCard.style.opacity = '0';
+            setTimeout(() => {
+                welcomeCard.style.transition = 'opacity 0.8s';
+                welcomeCard.style.opacity = '1';
+            }, 100);
+            
+            // Анимация появления шагов
+            const stepCards = document.querySelectorAll('.step-card');
+            stepCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            // Подсветка активных ссылок
+            stepCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.querySelector('.step-action .btn').classList.add('btn-tea');
+                    this.querySelector('.step-action .btn').classList.remove('btn-outline-tea');
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.querySelector('.step-action .btn').classList.remove('btn-tea');
+                    this.querySelector('.step-action .btn').classList.add('btn-outline-tea');
+                });
+            });
+            
+            // Информация для достижений
+            const achievementBadges = document.querySelectorAll('.achievement-badge');
+            achievementBadges.forEach(badge => {
+                const isLocked = badge.classList.contains('locked');
+                const title = isLocked ? 'Еще не достигнуто' : 'Получено!';
+                badge.setAttribute('title', title);
+            });
+            
+            // Обработка кликов по быстрым действиям
+            const actionButtons = document.querySelectorAll('.btn-action');
+            actionButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const url = this.getAttribute('href');
+                    const originalText = this.innerHTML;
+                    
+                    // Анимация загрузки
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Переход...';
+                    this.disabled = true;
+                    
+                    setTimeout(() => {
+                        window.location.href = url;
+                    }, 500);
+                });
+            });
+            
+            // Подсчет прогресса достижений
+            const earnedBadges = document.querySelectorAll('.achievement-badge:not(.locked)').length;
+            const totalBadges = achievementBadges.length;
+            
+            if (earnedBadges > 0) {
+                const progress = Math.round((earnedBadges / totalBadges) * 100);
+                const progressBar = document.createElement('div');
+                progressBar.className = 'progress mt-3';
+                progressBar.style.cssText = 'height: 8px; max-width: 300px; margin: 0 auto;';
+                progressBar.innerHTML = `
+                    <div class="progress-bar" role="progressbar" style="width: ${progress}%"></div>
+                `;
+                
+                const achievementsSection = document.querySelector('.achievements');
+                achievementsSection.appendChild(progressBar);
+                
+                const progressText = document.createElement('p');
+                progressText.className = 'text-center small mt-2';
+                progressText.textContent = `Выполнено ${progress}% достижений`;
+                achievementsSection.appendChild(progressText);
+            }
+        });
+    </script>
+</body>
+</html>

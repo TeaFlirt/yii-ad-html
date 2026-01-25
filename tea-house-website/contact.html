@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты чайной лавки</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --tea-green: #2E8B57;
+            --tea-light: #F5F5DC;
+        }
+        
+        .contact-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('/images/contact/tea-shop.jpg') center/cover no-repeat;
+            color: white;
+            padding: 100px 0;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info-item {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 100%;
+            transition: transform 0.3s;
+        }
+        
+        .contact-info-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--tea-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            color: var(--tea-green);
+        }
+        
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .branch-card {
+            background: var(--tea-light);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .branch-card:hover {
+            transform: translateX(5px);
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--tea-green);
+            color: white;
+            border-radius: 50%;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background: #1E6B42;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .btn-tea-green {
+            background-color: var(--tea-green);
+            color: white;
+        }
+        
+        .btn-tea-green:hover {
+            background-color: #1E6B42;
+            color: white;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: var(--tea-light);
+            color: var(--tea-green);
+        }
+        
+        .bg-tea-light {
+            background-color: var(--tea-light) !important;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-hero {
+                padding: 60px 0;
+                text-align: center;
+            }
+            
+            .contact-hero .btn-lg {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .social-icon {
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Герой секция -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">Свяжитесь с нами</h1>
+                    <p class="lead mb-0">Мы всегда рады помочь вам выбрать идеальный чай и ответить на все вопросы</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="#booking-form" class="btn btn-light btn-lg">
+                        <i class="fas fa-calendar-alt me-2"></i>Записаться на церемонию
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контактная информация -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Наш адрес</h4>
+                        <p class="mb-0">ул. Чайная, 15, Москва</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Телефон</h4>
+                        <p class="mb-0">+7 (495) 123-45-67</p>
+                        <p class="mb-0 small text-muted">+7 (800) 123-45-68 (бесплатно по РФ)</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Часы работы</h4>
+                        <p class="mb-0">Пн-Пт: 8:00 - 22:00, Сб-Вс: 9:00 - 23:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <!-- Карта и форма -->
+                <div class="col-lg-8">
+                    <!-- Карта -->
+                    <div class="map-container mb-5">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.373789929224!2d37.61763331593042!3d55.75124428055313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a50b315e573%3A0xa886bf5a3d9b2e68!2z0JzQvtGB0LrQstCw!5e0!3m2!1sru!2sru!4v1648561234567!5m2!1sru!2sru"
+                            width="100%" 
+                            height="400" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            title="Карта расположения чайной лавки">
+                        </iframe>
+                    </div>
+
+                    <!-- Форма обратной связи -->
+                    <div class="contact-card mb-5">
+                        <h2 class="mb-4">Напишите нам</h2>
+                        <p class="text-muted mb-4">Заполните форму ниже, и мы свяжемся с вами в течение 2 часов</p>
+                        
+                        <form id="contact-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Имя *</label>
+                                        <input type="text" id="name" class="form-control" 
+                                               placeholder="Ваше имя" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email *</label>
+                                        <input type="email" id="email" class="form-control" 
+                                               placeholder="your@email.com" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group mt-3">
+                                <label for="subject" class="form-label">Тема *</label>
+                                <input type="text" id="subject" class="form-control" 
+                                       placeholder="Тема сообщения" required>
+                            </div>
+                            
+                            <div class="form-group mt-3">
+                                <label for="message" class="form-label">Сообщение *</label>
+                                <textarea id="message" class="form-control" rows="6" 
+                                          placeholder="Ваше сообщение..." required></textarea>
+                            </div>
+                            
+                            <div class="row align-items-center mt-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Телефон</label>
+                                        <input type="tel" id="phone" class="form-control" 
+                                               placeholder="+7 (999) 123-45-67">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="contact_type" class="form-label">Тип обращения</label>
+                                        <select id="contact_type" class="form-select">
+                                            <option value="">Выберите тип обращения</option>
+                                            <option value="general">Общий вопрос</option>
+                                            <option value="order">Вопрос по заказу</option>
+                                            <option value="ceremony">Запись на церемонию</option>
+                                            <option value="wholesale">Оптовые закупки</option>
+                                            <option value="feedback">Отзыв и предложения</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-check mt-4">
+                                <input class="form-check-input" type="checkbox" id="agreePrivacy" required>
+                                <label class="form-check-label" for="agreePrivacy">
+                                    Я соглашаюсь с <a href="/privacy" class="text-tea-green">политикой конфиденциальности</a> и обработкой персональных данных
+                                </label>
+                            </div>
+                            
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Отправить сообщение
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Форма записи на церемонию -->
+                    <div class="contact-card" id="booking-form">
+                        <h2 class="mb-4">Запись на чайную церемонию</h2>
+                        <p class="text-muted mb-4">Забронируйте место на традиционную чайную церемонию</p>
+                        
+                        <form id="booking-form-inner">
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="ceremony_date" class="form-label">Дата церемонии *</label>
+                                    <input type="date" id="ceremony_date" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="ceremony_time" class="form-label">Время *</label>
+                                    <select id="ceremony_time" class="form-select" required>
+                                        <option value="">Выберите время</option>
+                                        <option value="10:00">10:00 - 11:30</option>
+                                        <option value="14:00">14:00 - 15:30</option>
+                                        <option value="18:00">18:00 - 19:30</option>
+                                        <option value="20:00">20:00 - 21:30</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="ceremony_type" class="form-label">Тип церемонии *</label>
+                                <select id="ceremony_type" class="form-select" required>
+                                    <option value="">Выберите тип</option>
+                                    <option value="chinese">Китайская Гунфу Ча</option>
+                                    <option value="japanese">Японская чайная церемония</option>
+                                    <option value="russian">Русское чаепитие</option>
+                                    <option value="meditation">Чайная медитация</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="guests" class="form-label">Количество гостей *</label>
+                                <input type="number" id="guests" class="form-control" min="1" max="10" value="1" required>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    <i class="fas fa-calendar-check me-2"></i>Забронировать
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Боковая панель -->
+                <div class="col-lg-4">
+                    <!-- Филиалы -->
+                    <div class="contact-card mb-4">
+                        <h4 class="mb-4">Наши филиалы</h4>
+                        <!-- Филиал 1 -->
+                        <div class="branch-card mb-3">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-store fa-lg text-tea-green me-3 mt-1"></i>
+                                <div>
+                                    <h5 class="mb-1">Чайная на Арбате</h5>
+                                    <p class="mb-1 small">ул. Арбат, 25, Москва</p>
+                                    <p class="mb-1 small">+7 (495) 234-56-78</p>
+                                    <p class="mb-0 small text-muted">10:00 - 22:00 ежедневно</p>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Проложить маршрут</a>
+                        </div>
+                        
+                        <!-- Филиал 2 -->
+                        <div class="branch-card mb-3">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-store fa-lg text-tea-green me-3 mt-1"></i>
+                                <div>
+                                    <h5 class="mb-1">Чайная в Китай-городе</h5>
+                                    <p class="mb-1 small">ул. Варварка, 8, Москва</p>
+                                    <p class="mb-1 small">+7 (495) 345-67-89</p>
+                                    <p class="mb-0 small text-muted">9:00 - 21:00 ежедневно</p>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Проложить маршрут</a>
+                        </div>
+                        
+                        <!-- Филиал 3 -->
+                        <div class="branch-card mb-3">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-store fa-lg text-tea-green me-3 mt-1"></i>
+                                <div>
+                                    <h5 class="mb-1">Чайная на Патриарших</h5>
+                                    <p class="mb-1 small">Патриарший пер., 7, Москва</p>
+                                    <p class="mb-1 small">+7 (495) 456-78-90</p>
+                                    <p class="mb-0 small text-muted">11:00 - 23:00 ежедневно</p>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Проложить маршрут</a>
+                        </div>
+                    </div>
+
+                    <!-- Социальные сети -->
+                    <div class="contact-card mb-4">
+                        <h4 class="mb-4">Мы в соцсетях</h4>
+                        <p class="text-muted mb-3">Подпишитесь, чтобы быть в курсе новостей и акций</p>
+                        <div class="d-flex justify-content-center mb-3">
+                            <a href="#" class="social-icon" title="ВКонтакте">
+                                <i class="fab fa-vk"></i>
+                            </a>
+                            <a href="#" class="social-icon" title="Telegram">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="#" class="social-icon" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon" title="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Ваш email для рассылки">
+                            <button class="btn btn-tea-green" type="button">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FAQ -->
+                    <div class="contact-card">
+                        <h4 class="mb-4">Частые вопросы</h4>
+                        <div class="accordion" id="faqAccordion">
+                            <!-- Вопрос 1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" 
+                                            data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        Как заказать чай онлайн?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse show" 
+                                     data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Выберите чай в нашем каталоге, добавьте в корзину и оформите заказ. Мы доставим его в удобное для вас время.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Вопрос 2 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" 
+                                            data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        Есть ли доставка по России?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" 
+                                     data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Да, мы осуществляем доставку по всей России. Сроки доставки от 2 до 7 дней в зависимости от региона.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Вопрос 3 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" 
+                                            data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        Можно ли посетить чайную церемонию?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" 
+                                     data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Конечно! Мы проводим чайные церемонии каждый день. Записаться можно через форму на сайте или по телефону.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Вопрос 4 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" 
+                                            data-bs-toggle="collapse" data-bs-target="#faq4">
+                                        Есть ли подарочные сертификаты?
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" 
+                                     data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Да, у нас есть подарочные сертификаты номиналом от 1000 до 10000 рублей. Можно оформить онлайн.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Вопрос 5 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" 
+                                            data-bs-toggle="collapse" data-bs-target="#faq5">
+                                        Проводятся ли мастер-классы?
+                                    </button>
+                                </h2>
+                                <div id="faq5" class="accordion-collapse collapse" 
+                                     data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Да, мы регулярно проводим мастер-классы по завариванию чая. Расписание есть на сайте.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Рассылка -->
+    <section class="py-5 bg-tea-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h3 class="mb-3">Подпишитесь на чайную рассылку</h3>
+                    <p class="mb-0">Получайте рецепты, новости о поступлениях и специальные предложения</p>
+                </div>
+                <div class="col-md-4">
+                    <form class="d-flex">
+                        <input type="email" class="form-control me-2" placeholder="Ваш email" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимация элементов при скролле
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.contact-info-item, .branch-card, .contact-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Валидация формы записи на церемонию
+            const bookingForm = document.getElementById('booking-form-inner');
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Здесь можно добавить AJAX отправку
+                    const formData = new FormData(this);
+                    
+                    // Показать сообщение об успехе
+                    const successAlert = document.createElement('div');
+                    successAlert.className = 'alert alert-success alert-dismissible fade show mt-3';
+                    successAlert.innerHTML = `
+                        <i class="fas fa-check-circle me-2"></i>
+                        <strong>Заявка отправлена!</strong> Мы свяжемся с вами для подтверждения записи.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    `;
+                    
+                    this.parentNode.insertBefore(successAlert, this.nextSibling);
+                    this.reset();
+                    
+                    // Автоматически скрыть сообщение через 5 секунд
+                    setTimeout(() => {
+                        const bsAlert = new bootstrap.Alert(successAlert);
+                        bsAlert.close();
+                    }, 5000);
+                });
+            }
+
+            // Установка минимальной даты для записи (сегодняшняя дата)
+            const dateInput = bookingForm?.querySelector('input[type="date"]');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+            }
+
+            // Плавный скролл к формам
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#') && href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Обработка формы обратной связи
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const successAlert = document.createElement('div');
+                    successAlert.className = 'alert alert-success alert-dismissible fade show mt-3';
+                    successAlert.innerHTML = `
+                        <i class="fas fa-check-circle me-2"></i>
+                        <strong>Сообщение отправлено!</strong> Мы ответим вам в течение 2 часов.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    `;
+                    
+                    this.parentNode.insertBefore(successAlert, this.nextSibling);
+                    this.reset();
+                    
+                    setTimeout(() => {
+                        const bsAlert = new bootstrap.Alert(successAlert);
+                        bsAlert.close();
+                    }, 5000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
