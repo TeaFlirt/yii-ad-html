@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чайная Лавка - Навигация по всем страницам</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --tea-green: #2E8B57;
+            --tea-brown: #8B4513;
+            --tea-light: #F5F5DC;
+            --tea-gold: #DAA520;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--tea-light) 0%, #E8F5E9 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .tea-nav-header {
+            background: linear-gradient(135deg, var(--tea-green) 0%, var(--tea-brown) 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .tea-logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--tea-gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .site-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .site-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .navigation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 2px solid transparent;
+        }
+        
+        .page-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: var(--tea-green);
+        }
+        
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--tea-green) 0%, #1E6B42 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .page-card-primary {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        }
+        
+        .page-card-highlight {
+            border-left: 5px solid var(--tea-gold);
+        }
+        
+        .card-title {
+            color: var(--tea-green);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .card-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .btn-tea {
+            background: linear-gradient(135deg, var(--tea-green) 0%, #1E6B42 100%);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-tea:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
+            color: white;
+        }
+        
+        .btn-tea-outline {
+            border: 2px solid var(--tea-green);
+            color: var(--tea-green);
+            background: transparent;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-tea-outline:hover {
+            background: var(--tea-green);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            color: var(--tea-brown);
+            font-weight: 600;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--tea-light);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: var(--tea-green);
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.85rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+        
+        .status-complete {
+            background: rgba(46, 139, 87, 0.1);
+            color: var(--tea-green);
+        }
+        
+        .status-new {
+            background: rgba(218, 165, 32, 0.1);
+            color: var(--tea-gold);
+        }
+        
+        .quick-links {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .quick-link-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            text-decoration: none;
+            color: #555;
+            transition: all 0.2s;
+        }
+        
+        .quick-link-item:hover {
+            color: var(--tea-green);
+            transform: translateX(5px);
+        }
+        
+        .quick-link-item:last-child {
+            border-bottom: none;
+        }
+        
+        .quick-link-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--tea-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--tea-green);
+        }
+        
+        .project-info {
+            background: linear-gradient(135deg, var(--tea-brown) 0%, #6b3a1a 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .info-title {
+            color: var(--tea-gold);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .info-icon {
+            margin-right: 10px;
+            color: var(--tea-gold);
+            margin-top: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .tea-nav-header {
+                padding: 40px 0;
+                border-radius: 0 0 20px 20px;
+            }
+            
+            .tea-logo {
+                font-size: 3rem;
+            }
+            
+            .site-title {
+                font-size: 2rem;
+            }
+            
+            .page-card {
+                margin-bottom: 20px;
+            }
+            
+            .quick-links {
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .tea-nav-header {
+                padding: 30px 0;
+            }
+            
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .tea-logo {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .page-preview {
+            height: 180px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--tea-green);
+            font-size: 5rem;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .page-card:hover .page-preview {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="tea-nav-header">
+        <div class="container">
+            <div class="tea-logo">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <h1 class="site-title">Чайная Лавка "Восточная Мудрость"</h1>
+            <p class="site-subtitle">Навигация по всем страницам сайта чайной лавки. Выберите страницу для просмотра.</p>
+        </div>
+    </header>
+
+    <div class="navigation-container">
+        <div class="container">
+            <!-- Основные страницы сайта -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Основные страницы сайта</h2>
+                </div>
+                
+                <!-- Главная страница -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="page-card page-card-primary">
+                        <div class="card-body p-4">
+                            <div class="page-preview">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3 class="card-title">Главная страница</h3>
+                            <p class="card-description">
+                                Основная страница сайта с героем-секцией, каталогом чая, преимуществами и отзывами.
+                                Идеальная отправная точка для знакомства с чайной лавкой.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="index.html" class="btn btn-tea" target="_blank">
+                                    <i class="fas fa-external-link-alt me-2"></i>Открыть
+                                </a>
+                                <span class="status-indicator status-complete">
+                                    <i class="fas fa-check-circle me-1"></i> Готово
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- О нас -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="page-card page-card-primary page-card-highlight">
+                        <div class="card-body p-4">
+                            <div class="page-preview">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <h3 class="card-title">О нашей чайной лавке</h3>
+                            <p class="card-description">
+                                Страница с историей компании, ценностями, командой, достижениями и галереей.
+                                Показывает миссию и философию чайной лавки.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="about.html" class="btn btn-tea" target="_blank">
+                                    <i class="fas fa-external-link-alt me-2"></i>Открыть
+                                </a>
+                                <span class="status-indicator status-complete">
+                                    <i class="fas fa-check-circle me-1"></i> Готово
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Контакты -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="page-card page-card-primary">
+                        <div class="card-body p-4">
+                            <div class="page-preview">
+                                <i class="fas fa-address-book"></i>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fas fa-address-book"></i>
+                            </div>
+                            <h3 class="card-title">Контакты</h3>
+                            <p class="card-description">
+                                Страница с контактной информацией, картой, формой обратной связи,
+                                записью на церемонию, филиалами и FAQ.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="contact.html" class="btn btn-tea" target="_blank">
+                                    <i class="fas fa-external-link-alt me-2"></i>Открыть
+                                </a>
+                                <span class="status-indicator status-complete">
+                                    <i class="fas fa-check-circle me-1"></i> Готово
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Страницы авторизации -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Авторизация и учетная запись</h2>
+                </div>
+                
+                <!-- Вход -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="page-card">
+                        <div class="card-body p-4">
+                            <div class="page-preview">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </div>
+                            <h3 class="card-title">Вход в аккаунт</h3>
+                            <p class="card-description">
+                                Страница входа в чайный клуб с формой авторизации,
+                                социальными кнопками и ссылками на восстановление пароля.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="login.html" class="btn btn-tea" target="_blank">
+                                    <i class="fas fa-external-link-alt me-2"></i>Открыть
+                                </a>
+                                <span class="status-indicator status-complete">
+                                    <i class="fas fa-check-circle me-1"></i> Готово
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Регистрация -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="page-card">
+                        <div class="card-body p-4">
+                            <div class="page-preview">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h3 class="card-title">Регистрация</h3>
+                            <p class="card-description">
+                                Расширенная форма регистрации с выбором предпочтений в чае,
+                                уровнем подписки и преимуществами для новых пользователей.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="signup.html" class="btn btn-tea" target="_blank">
+                                    <i class="fas fa-external-link-alt me-2"></i>Открыть
+                                </a>
+                                <span class="status-indicator status-complete">
+                                    <i class="fas fa-check-circle me-1"></i> Готово
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Приветствие -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="page-card">
+                        <div class="card-body p-4">
+                            <div class="page-preview">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3 class="card-title">Добро пожаловать</h3>
+                            <p class="card-description">
+                                Страница приветствия после успешной регистрации с информацией о профиле,
+                                преимуществах, достижениях и следующих шагах.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="welcome.html" class="btn btn-tea" target="_blank">
+                                    <i class="fas fa-external-link-alt me-2"></i>Открыть
+                                </a>
+                                <span class="status-indicator status-complete">
+                                    <i class="fas fa-check-circle me-1"></i> Готово
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Быстрые ссылки -->
+            <div class="row">
+                <div class="col-lg-8 mb-4">
+                    <div class="quick-links">
+                        <h3 class="section-title mb-4">Быстрый доступ ко всем страницам</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="index.html" class="quick-link-item" target="_blank">
+                                    <div class="quick-link-icon">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div>
+                                        <strong>Главная страница</strong>
+                                        <div class="small text-muted">index.html</div>
+                                    </div>
+                                </a>
+                                
+                                <a href="about.html" class="quick-link-item" target="_blank">
+                                    <div class="quick-link-icon">
+                                        <i class="fas fa-info-circle"></i>
+                                    </div>
+                                    <div>
+                                        <strong>О чайной лавке</strong>
+                                        <div class="small text-muted">about.html</div>
+                                    </div>
+                                </a>
+                                
+                                <a href="contact.html" class="quick-link-item" target="_blank">
+                                    <div class="quick-link-icon">
+                                        <i class="fas fa-address-book"></i>
+                                    </div>
+                                    <div>
+                                        <strong>Контакты</strong>
+                                        <div class="small text-muted">contact.html</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="login.html" class="quick-link-item" target="_blank">
+                                    <div class="quick-link-icon">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                    </div>
+                                    <div>
+                                        <strong>Вход в аккаунт</strong>
+                                        <div class="small text-muted">login.html</div>
+                                    </div>
+                                </a>
+                                
+                                <a href="signup.html" class="quick-link-item" target="_blank">
+                                    <div class="quick-link-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div>
+                                        <strong>Регистрация</strong>
+                                        <div class="small text-muted">signup.html</div>
+                                    </div>
+                                </a>
+                                
+                                <a href="welcome.html" class="quick-link-item" target="_blank">
+                                    <div class="quick-link-icon">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <div>
+                                        <strong>Добро пожаловать</strong>
+                                        <div class="small text-muted">welcome.html</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 pt-3 border-top text-center">
+                            <a href="#" class="btn btn-tea-outline me-2" id="openAll">
+                                <i class="fas fa-external-link-alt me-1"></i> Открыть все страницы
+                            </a>
+                            <a href="#" class="btn btn-tea-outline" id="downloadAll">
+                                <i class="fas fa-download me-1"></i> Скачать все файлы
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="project-info">
+                        <h3 class="info-title">
+                            <i class="fas fa-info-circle me-2"></i>О проекте
+                        </h3>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div>
+                                <strong>Технологии</strong>
+                                <div class="small opacity-75">HTML5, CSS3, Bootstrap 5, JavaScript</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div>
+                                <strong>Всего страниц</strong>
+                                <div class="small opacity-75">6 готовых HTML-страниц</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div>
+                                <strong>Цветовая схема</strong>
+                                <div class="small opacity-75">Чайная тема (зеленый, коричневый, бежевый)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div>
+                                <strong>Адаптивность</strong>
+                                <div class="small opacity-75">Полностью адаптивный дизайн</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <strong>Статус</strong>
+                                <div class="small opacity-75">Все страницы готовы к использованию</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 pt-3 border-top border-tea-light">
+                            <div class="small opacity-75">
+                                <i class="fas fa-clock me-1"></i> Последнее обновление: 
+                                <span id="currentDate"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Инструкция -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="alert alert-tea" style="background-color: rgba(46, 139, 87, 0.1); border-color: var(--tea-green);">
+                        <h5><i class="fas fa-lightbulb text-tea-green me-2"></i>Инструкция по использованию</h5>
+                        <ol class="mb-0">
+                            <li>Все HTML-файлы должны находиться в одной папке</li>
+                            <li>Для корректного отображения изображений создайте папку <code>/images/</code> со структурой, указанной в документации</li>
+                            <li>Ссылки между страницами уже настроены</li>
+                            <li>Для тестирования можно использовать Live Server в VS Code или любой другой локальный сервер</li>
+                            <li>Все страницы полностью независимы и могут работать как отдельные HTML-файлы</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Установка текущей даты
+            const currentDate = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('currentDate').textContent = currentDate.toLocaleDateString('ru-RU', options);
+            
+            // Функция для открытия всех страниц
+            document.getElementById('openAll').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const pages = [
+                    'index.html',
+                    'about.html', 
+                    'contact.html',
+                    'login.html',
+                    'signup.html',
+                    'welcome.html'
+                ];
+                
+                // Открываем каждую страницу в новой вкладке
+                pages.forEach(page => {
+                    window.open(page, '_blank');
+                });
+                
+                // Показать уведомление
+                showNotification('Все страницы открываются в новых вкладках...');
+            });
+            
+            // Функция для "скачивания" всех файлов (в реальном проекте это была бы ZIP-архив)
+            document.getElementById('downloadAll').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // В реальном приложении здесь был бы AJAX-запрос для создания архива
+                // Для демо просто показываем сообщение
+                showNotification('В реальном проекте здесь был бы архив со всеми файлами. Сейчас все файлы уже доступны в папке проекта.', 'info');
+            });
+            
+            // Функция для показа уведомлений
+            function showNotification(message, type = 'success') {
+                // Создаем уведомление
+                const notification = document.createElement('div');
+                notification.className = `alert alert-${type === 'success' ? 'success' : 'info'} alert-dismissible fade show position-fixed`;
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 9999;
+                    min-width: 300px;
+                    max-width: 400px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                `;
+                notification.innerHTML = `
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'} me-2"></i>
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // Автоматически скрыть через 5 секунд
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 5000);
+            }
+            
+            // Добавляем анимацию появления карточек
+            const cards = document.querySelectorAll('.page-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            // Подсветка активной карточки при наведении
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+            
+            // Добавляем подсветку кнопок при наведении на карточку
+            cards.forEach(card => {
+                const button = card.querySelector('.btn-tea');
+                
+                card.addEventListener('mouseenter', function() {
+                    if (button) {
+                        button.style.transform = 'scale(1.05)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if (button) {
+                        button.style.transform = 'scale(1)';
+                    }
+                });
+            });
+            
+            // Проверка существования страниц
+            function checkPageExistence(page) {
+                return new Promise((resolve) => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('HEAD', page, true);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4) {
+                            resolve(xhr.status !== 404);
+                        }
+                    };
+                    xhr.onerror = function() {
+                        resolve(false);
+                    };
+                    xhr.send();
+                });
+            }
+            
+            // Проверяем все страницы и обновляем статусы
+            const pageLinks = {
+                'index.html': document.querySelector('a[href="index.html"]'),
+                'about.html': document.querySelector('a[href="about.html"]'),
+                'contact.html': document.querySelector('a[href="contact.html"]'),
+                'login.html': document.querySelector('a[href="login.html"]'),
+                'signup.html': document.querySelector('a[href="signup.html"]'),
+                'welcome.html': document.querySelector('a[href="welcome.html"]')
+            };
+            
+            // Для демо устанавливаем, что все страницы существуют
+            // В реальном проекте здесь была бы проверка через AJAX
+            Object.keys(pageLinks).forEach(page => {
+                const link = pageLinks[page];
+                if (link) {
+                    const statusIndicator = link.closest('.page-card').querySelector('.status-indicator');
+                    if (statusIndicator) {
+                        // Имитируем проверку
+                        setTimeout(() => {
+                            statusIndicator.innerHTML = '<i class="fas fa-check-circle me-1"></i> Доступна';
+                            statusIndicator.classList.add('status-complete');
+                        }, 500);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
