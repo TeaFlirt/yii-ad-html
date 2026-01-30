@@ -5,7 +5,7 @@
 ## 🚀 Быстрый доступ к сайту
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-сайт-2E8B57?style=for-the-badge&logo=github)](https://TeaFlirt.github.io/yii-ad-html/)
-[![Навигация](https://img.shields.io/badge/Навигация-по_страницам-8B4513?style=for-the-badge)](navigation.html)
+[![Навигация](https://img.shields.io/badge/Навигация-по_страницам-8B4513?style=for-the-badge)](tea-house-website/navigation.html)
 
 ### 📍 Основные страницы сайта
 
@@ -30,30 +30,48 @@
 
 ## 🛠 Технологии
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![Font Awesome](https://img.shields.io/badge/Font_Awesome-528DD7?style=flat&logo=font-awesome&logoColor=white)
+<p align="left">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Font_Awesome-528DD7?style=for-the-badge&logo=font-awesome&logoColor=white" alt="Font Awesome">
+</p>
 
-## 🏗️ Структура проекта
+## 📁 Структура проекта
 
-docs/ # Основная папка для GitHub Pages
-├── index.html # Основная страница (GitHub Pages)
-├── navigation.html # Навигационная страница
-├── index.html # Главная страница сайта
-├── about.html # Страница "О нас"
-├── contact.html # Страница контактов
-├── login.html # Страница входа
-├── signup.html # Страница регистрации
-├── welcome.html # Страница приветствия
-├── css/ # Стили
-│ ├── site.css # Основные стили
-│ └── pages/ # Стили для отдельных страниц
-├── js/ # JavaScript
-│ └── main.js # Основной скрипт
-└── images/ # Изображения
-├── about/ # Для страницы "О нас"
-├── team/ # Фото команды
-├── gallery/ # Галерея
-└── contact/ # Для контактов
+```
+docs/                          # Основная папка для GitHub Pages
+├── index.html                 # Основная страница (GitHub Pages)
+├── navigation.html            # Навигационная страница
+└── tea-house-website/        # Основная директория сайта
+    ├── index.html            # Главная страница сайта
+    ├── about.html            # Страница "О нас"
+    ├── contact.html          # Страница контактов
+    ├── login.html            # Страница входа
+    ├── signup.html           # Страница регистрации
+    ├── welcome.html          # Страница приветствия
+    ├── navigation.html       # Карта всех страниц сайта
+    ├── css/                  # Стили
+    │   ├── site.css          # Основные стили
+    │   └── pages/            # Стили для отдельных страниц
+    ├── js/                   # JavaScript
+    │   └── main.js           # Основной скрипт
+    └── images/               # Изображения
+        ├── about/            # Для страницы "О нас"
+        ├── team/             # Фото команды
+        ├── gallery/          # Галерея
+        └── contact/          # Для контактов
+```
+
+## 🎨 Дизайн
+
+Проект выполнен в спокойных природных тонах с акцентами на зеленом и коричневом цветах, что создает атмосферу уюта и гармонии. Все элементы интерфейса продуманы для максимального удобства пользователя.
+
+## 📱 Адаптивность
+
+Сайт полностью адаптирован под все современные устройства:
+- 📱 Мобильные телефоны (320px+)
+- 📟 Планшеты (768px+)
+- 💻 Ноутбуки (1024px+)
+- 🖥️ Десктопы (1440px+)
